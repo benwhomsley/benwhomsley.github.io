@@ -1,17 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Level from "./views/Level/Level";
+import Home from "./views/Home/Home";
+import Header from "./views/Header/Header";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+export default function Index() {
+	return (
+		<div id="game">
+			<BrowserRouter>
+				<Header></Header>
+				<Routes>
+					<Route index element={<Home />} />
+					<Route path="/level/:levelId" element={<Level />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
+	);
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+ReactDOM.render(<Index />, document.getElementById("root"));

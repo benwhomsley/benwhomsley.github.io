@@ -1,0 +1,63 @@
+html, body, #root {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #121213;
+}
+
+#game {
+	width: 100%;
+	margin: 0 auto;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #121213;
+}
+
+#boardContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	overflow: hidden;
+}
+
+#board {
+	display: grid;
+	grid-template-rows: repeat(6, 1fr);
+	grid-gap: 5px;
+	padding: 10px;
+	box-sizing: border-box;
+	width: 350px;
+	height: 420px;
+}
+
+.row {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-gap: 5px;
+}
+
+.row[data-animation='shake'] {
+	animation: shake 0.2s linear forwards;
+}
+
+@keyframes shake {
+	0% {
+		transform: translateX(0);
+	}
+
+	33% {
+		transform: translateX(8px);
+	}
+
+	66% {
+		transform: translateX(-8px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}

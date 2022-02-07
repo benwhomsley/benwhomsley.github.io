@@ -1,0 +1,21 @@
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	min-height: 50px;
+	padding: 0 10px;
+	color: #d7dadc;
+	border-bottom: 1px solid #3a3a3c;
+}
+
+header .title {
+	font-weight: 700;
+	font-size: 36px;
+	letter-spacing: 0.2rem;
+	text-transform: uppercase;
+	text-align: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+}

@@ -1,0 +1,60 @@
+button {
+	font-family: inherit;
+	font-weight: bold;
+	border: 0;
+	padding: 0;
+	margin: 0 6px 0 0;
+	height: 58px;
+	border-radius: 4px;
+	cursor: pointer;
+	user-select: none;
+	background-color: #818384;
+	color: #d7dadc;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.fade {
+	transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+button:last-of-type {
+	margin: 0;
+}
+
+.half {
+	flex: 0.5;
+}
+
+.one {
+	flex: 1;
+}
+
+.one-and-a-half {
+	flex: 1.5;
+	font-size: 12px;
+}
+
+.two {
+	flex: 2;
+}
+
+button[data-state='correct'] {
+	background-color: #538d4e;
+}
+
+button[data-state='present'] {
+	background-color: #b59f3b;
+}
+
+button[data-state='absent'] {
+	background-color: #3a3a3c;
+}
