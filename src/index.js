@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Level from "./views/Level/Level";
 import Home from "./views/Home/Home";
 import Header from "./views/Header/Header";
@@ -7,13 +7,13 @@ import Header from "./views/Header/Header";
 export default function Index() {
 	return (
 		<div id="game">
-			<BrowserRouter>
+			<HashRouter>
 				<Header></Header>
 				<Routes>
 					<Route index element={<Home />} />
 					<Route path="/level/:levelId" element={<Level />} />
 				</Routes>
-			</BrowserRouter>
+			</HashRouter>
 		</div>
 	);
 }
