@@ -30,8 +30,10 @@ html, body, #root {
 	grid-gap: 5px;
 	padding: 10px;
 	box-sizing: border-box;
-	width: 350px;
-	height: 420px;
+	max-width: 350px;
+	max-height: 420px;
+	height: 100%;
+	width: 100%;
 }
 
 .row {

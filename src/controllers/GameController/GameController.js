@@ -11,7 +11,9 @@ export default class GameController extends Component {
 			correct: [],
 			present: [],
 			absent: []
-		}
+		},
+		width: 0,
+		height: 0
 	};
 
 	data = require('../../data/GameData.json');
@@ -22,9 +24,17 @@ export default class GameController extends Component {
 	maxRows = parseInt(this.props.rows);
 	maxLetters = parseInt(this.props.letters);
 
+
+	updateDimensions = () => {
+		let height = window.innerHeight - 250;
+		this.setState({ width: height * 0.8333333333, height: height });
+	};
+
 	componentDidMount() {
+		this.updateDimensions();
+		window.addEventListener('resize', this.updateDimensions);
 		// Log word out for testing
-		console.log(this.data.gameWords[this.props.level - 1], this.props.level)
+		console.log(this.data.gameWords[this.props.level - 1])
 
 		this.setState({ word: this.data.gameWords[this.props.level - 1] });
 		for (let row = 0; row < this.props.rows; row++) {
@@ -45,6 +55,7 @@ export default class GameController extends Component {
 
 	componentWillUnmount() {
 		document.removeEventListener('keydown', this, false);
+		window.removeEventListener('resize', this.updateDimensions);
 	}
 
 	buttonPressed(key, keycode) {
@@ -192,7 +203,7 @@ export default class GameController extends Component {
 		return (
 			<Fragment>
 				<div id='boardContainer'>
-					<div id="board">
+					<div id="board" style={{ width: this.state.width + 'px' }}>
 						{rows}
 					</div>
 				</div>

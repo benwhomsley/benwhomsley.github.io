@@ -13,6 +13,14 @@
 	color: #d7dadc;
 }
 
+.tile:before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 0;
+	padding-bottom: calc(100% / (1/1));
+}
+
 .tile[data-state='tbd'] {
 	background-color: #121213;
 	border: 2px solid #565758;
