@@ -88,36 +88,45 @@ export default class GameController extends Component {
 
 	submitGuess() {
 		if (this.letterIndex === this.maxLetters) {
-			if (this.rowIndex < this.maxRows - 1) {
-				if (!this.data.acceptedWords.includes(this.getWord()) && !this.data.gameWords.includes(this.getWord())) {
-					const rows = this.state.rows;
-					rows[this.rowIndex].animation = 'shake';
+			if (!this.data.acceptedWords.includes(this.getWord()) && !this.data.gameWords.includes(this.getWord())) {
+				const rows = this.state.rows;
+				rows[this.rowIndex].animation = 'shake';
+				this.setState({ rows: rows })
+				setTimeout(() => {
+					rows[this.rowIndex].animation = null;
 					this.setState({ rows: rows })
-					setTimeout(() => {
-						rows[this.rowIndex].animation = null;
-						this.setState({ rows: rows })
-					}, 200);
-					return
-				}
+				}, 200);
+				return
+			}
 
-				this.addRevealAnimation();
+			this.addRevealAnimation();
 
-				if (this.getWord() == this.state.word) {
-					// Guess is correct
-					this.addJumpAnimation();
+			if (this.getWord() == this.state.word) {
+				// Guess is correct
+				this.addJumpAnimation();
+				const guesses = this.getGuesses();
+				this.props.gameComplete([{
+					level: this.props.level,
+					guesses,
+					state: 'complete'
+				}],
+					true,
+					this.state.word);
+			} else {
+				if (this.rowIndex === this.maxRows - 1) {
+					// game failed
 					const guesses = this.getGuesses();
-					this.props.setCookie([{
+					this.props.gameComplete([{
 						level: this.props.level,
 						guesses,
-						state: 'complete'
-					}]);
+						state: 'failed'
+					}],
+						false,
+						this.state.word);
 				} else {
 					this.rowIndex++
 					this.letterIndex = 0;
 				}
-
-			} else {
-				// Last guess
 			}
 		}
 	}

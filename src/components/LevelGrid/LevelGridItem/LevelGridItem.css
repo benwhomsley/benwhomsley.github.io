@@ -16,7 +16,12 @@
 	border: 2px solid #565758;
 }
 
-.levelGridItem[data-complete=true] {
+.levelGridItem[data-state='complete'] {
 	background-color: #538d4e;
+	border: none;
+}
+
+.levelGridItem[data-state='failed'] {
+	background-color: #bb3636;
 	border: none;
 }

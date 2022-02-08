@@ -6,7 +6,7 @@ const LevelGridItem = (props) => {
 	const handleClick = () => navigate('/level/' + props.level);
 
 	return (
-		<div className="levelGridItem" data-complete={props.complete} onClick={handleClick}>{props.level}</div>
+		<div className="levelGridItem" data-state={props.levelState} onClick={handleClick}>{props.level}</div>
 	);
 };
 

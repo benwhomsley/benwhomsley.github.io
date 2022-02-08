@@ -7,10 +7,12 @@ import GameController from '../../controllers/GameController/GameController'
 
 const Level = () => {
 	const params = useParams();
-	const [showModal, setshowModal] = useState(false);
+	const [showModal, setShowModal] = useState(false);
+	const [modalSuccess, setModalSuccess] = useState(false);
+	const [correctWord, setCorrectWord] = useState('');
 	const [cookies, setCookie] = useCookies(['levels']);
 
-	function gameComplete(data) {
+	function gameComplete(data, win, word) {
 		let cookie = cookies.levels ? cookies.levels : [];
 		let addCookie = true;
 		if (cookie.find(x => x.level === data[0].level)) {
@@ -22,14 +24,20 @@ const Level = () => {
 		}
 
 		setTimeout(() => {
-			setshowModal(true);
+			setShowModal(true);
+			setCorrectWord(word);
+			if (win) {
+				setModalSuccess(true);
+			} else {
+				setModalSuccess(false);
+			}
 		}, 2000);
 	}
 
 	return (
 		<Fragment>
-			<Modal show={showModal}></Modal>
-			<GameController rows="6" letters="5" level={params.levelId} setCookie={gameComplete}></GameController>
+			<Modal show={showModal} success={modalSuccess} word={correctWord}></Modal>
+			<GameController rows="6" letters="5" level={params.levelId} gameComplete={gameComplete}></GameController>
 		</Fragment>
 	);
 }

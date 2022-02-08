@@ -39,7 +39,11 @@
 	right: 16px;
 }
 
-button.success {
-	padding: 10px;
+.overlay button {
+	padding: 0 10px;
+	height: 44px;
+}
+
+.overlay button.success {
 	background-color: #538d4e;
 }

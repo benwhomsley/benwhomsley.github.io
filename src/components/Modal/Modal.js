@@ -5,6 +5,9 @@ const Modal = (props) => {
 	const navigate = useNavigate();
 	const handleClick = () => navigate('/');
 
+	const title = props.success ? <h1>Congratulations</h1> : <h1>Unlucky</h1>
+	const message = props.success ? null : <p>The answer was: {props.word}</p>
+
 	return (
 		<div className="overlay" data-show={props.show}>
 			<div className="content">
@@ -13,8 +16,9 @@ const Modal = (props) => {
 						<path fill="#565758" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
 					</svg>
 				</div>
-				<h1>Congratulations</h1>
-				<button className="success" onClick={handleClick}>Back to levels</button>
+				{title}
+				{message}
+				<button className={`${props.success ? "success" : ""}`} onClick={handleClick}>Back to levels</button>
 			</div>
 		</div>
 	);
