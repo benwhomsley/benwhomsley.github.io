@@ -39,9 +39,20 @@
 	right: 16px;
 }
 
+.overlay h1 {
+	margin-top: 0px;
+}
+
+.overlay .buttons {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .overlay button {
 	padding: 0 10px;
 	height: 44px;
+	flex: unset;
 }
 
 .overlay button.success {

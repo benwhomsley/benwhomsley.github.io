@@ -9,7 +9,6 @@ const Home = () => {
 		setCookie('levels', cookie);
 	}
 
-
 	return (
 		<LevelGrid levelState={cookie} />
 	);

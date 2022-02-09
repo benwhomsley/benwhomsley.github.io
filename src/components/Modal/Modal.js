@@ -2,8 +2,13 @@ import './Modal.css';
 import { useNavigate } from 'react-router-dom';
 
 const Modal = (props) => {
+	const nextLevel = parseInt(props.level) + 1;
 	const navigate = useNavigate();
-	const handleClick = () => navigate('/');
+	const backToLevels = () => navigate('/');
+	const navigateNext = () => {
+		navigate('/level/' + nextLevel, { levelId: nextLevel });
+		window.location.reload();
+	}
 
 	const title = props.success ? <h1>Congratulations</h1> : <h1>Unlucky</h1>
 	const message = props.success ? null : <p>The answer was: {props.word}</p>
@@ -18,7 +23,10 @@ const Modal = (props) => {
 				</div>
 				{title}
 				{message}
-				<button className={`${props.success ? "success" : ""}`} onClick={handleClick}>Back to levels</button>
+				<div className="buttons">
+					<button className={`${props.success ? "success" : ""}`} onClick={navigateNext}>Next level</button>
+					<a onClick={backToLevels}>Back to levels</a>
+				</div>
 			</div>
 		</div>
 	);

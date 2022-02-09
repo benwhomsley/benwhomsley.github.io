@@ -89,9 +89,11 @@ export default class GameController extends Component {
 	submitGuess() {
 		if (this.letterIndex === this.maxLetters) {
 			if (!this.data.acceptedWords.includes(this.getWord()) && !this.data.gameWords.includes(this.getWord())) {
+				// guess not in word list
 				const rows = this.state.rows;
 				rows[this.rowIndex].animation = 'shake';
 				this.setState({ rows: rows })
+				this.props.showToast('Not in word list');
 				setTimeout(() => {
 					rows[this.rowIndex].animation = null;
 					this.setState({ rows: rows })
